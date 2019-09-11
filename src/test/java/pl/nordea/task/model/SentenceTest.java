@@ -8,9 +8,16 @@ public class SentenceTest {
 
     @Test
     public void splittSentenceIntoWords() {
+        //given
+        //when
+        //then
+
     }
 
     @Test
     public void prepareSentenceToSplitt() {
+        //given
+        //when
+        //then
     }
 }
