@@ -9,16 +9,17 @@ public class Sentence {
 
     public Sentence(String oryginalText) {
         this.oryginalText = oryginalText;
-        this.wordList = splittSentenceIntoWords(oryginalText);
+        this.wordList = splittSentenceIntoWords();
     }
 
-    public List<String> splittSentenceIntoWords(String oryginalText) {
+    public String prepareSentenceToSplitt() {
+        return oryginalText.replaceAll("[.!?,:;\"\\n]"," ");
+    }
+
+    public List<String> splittSentenceIntoWords() {
         return null;
     }
 
-    public String prepareSentenceToSplitt(String oryginalText) {
-        return null;
-    }
 
     @Override
     public boolean equals(Object o) {
