@@ -4,8 +4,6 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
-
 public class XmlConverterTest {
 
     @Test
@@ -16,7 +14,7 @@ public class XmlConverterTest {
     public void readOryginalSentenceFromFile() {
         //given
         File inputFile = new File("sample_data/small.in");
-        File outputFile = new File("sample_test/smallTest.xml");
+        File outputFile = new File("test_data/smallTest.xml");
         String expected = "";
         //when
         //then

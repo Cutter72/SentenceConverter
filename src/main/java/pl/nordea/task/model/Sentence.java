@@ -21,20 +21,8 @@ public class Sentence {
         this.wordList = null;
     }
 
-    public String getoriginalText() {
+    public String getOriginalText() {
         return originalText;
-    }
-
-    public void setoriginalText(String originalText) {
-        this.originalText = originalText;
-    }
-
-    public List<String> getWordList() {
-        return wordList;
-    }
-
-    public void setWordList(List<String> wordList) {
-        this.wordList = wordList;
     }
 
     public String prepareSentenceToSplit(String originalText) {

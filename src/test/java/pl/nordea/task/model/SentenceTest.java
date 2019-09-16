@@ -26,10 +26,10 @@ public class SentenceTest {
         Sentence sentenceC = new Sentence(givenSentenceTextC);
         Sentence sentenceD = new Sentence(givenSentenceTextD);
         //when
-        String actualA = sentenceA.prepareSentenceToSplit(sentenceA.getoriginalText());
-        String actualB = sentenceB.prepareSentenceToSplit(sentenceB.getoriginalText());
-        String actualC = sentenceC.prepareSentenceToSplit(sentenceC.getoriginalText());
-        String actualD = sentenceD.prepareSentenceToSplit(sentenceD.getoriginalText());
+        String actualA = sentenceA.prepareSentenceToSplit(sentenceA.getOriginalText());
+        String actualB = sentenceB.prepareSentenceToSplit(sentenceB.getOriginalText());
+        String actualC = sentenceC.prepareSentenceToSplit(sentenceC.getOriginalText());
+        String actualD = sentenceD.prepareSentenceToSplit(sentenceD.getOriginalText());
         //then
         assertEquals(expectedSentenceTextA, actualA);
         assertEquals(expectedSentenceTextB, actualB);
