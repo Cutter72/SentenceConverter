@@ -4,19 +4,41 @@ import java.util.List;
 
 
 public class Sentence {
-    private final String oryginalText;
-    private final List<String> wordList;
+    private String originalText;
+    private List<String> wordList;
 
-    public Sentence(String oryginalText) {
-        this.oryginalText = oryginalText;
-        this.wordList = splittSentenceIntoWords();
+    public Sentence() {
+        this.originalText = null;
+        this.wordList = null;
     }
 
-    public String prepareSentenceToSplitt() {
-        return oryginalText.replaceAll("[.!?,:;\"\\n]"," ");
+    public Sentence(String originalText) {
+        this.originalText = originalText;
+        this.wordList = null;
     }
 
-    public List<String> splittSentenceIntoWords() {
+    public String getoriginalText() {
+        return originalText;
+    }
+
+    public void setoriginalText(String originalText) {
+        this.originalText = originalText;
+    }
+
+    public List<String> getWordList() {
+        return wordList;
+    }
+
+    public void setWordList(List<String> wordList) {
+        this.wordList = wordList;
+    }
+
+    public String prepareSentenceToSplit(String originalText) {
+        return originalText.replaceAll("[.!?,:;\"\\n]"," ");
+    }
+
+    public List<String> splitSentenceIntoWords(String preparedSentenceText) {
+
         return null;
     }
 
@@ -28,13 +50,13 @@ public class Sentence {
 
         Sentence sentence = (Sentence) o;
 
-        if (!oryginalText.equals(sentence.oryginalText)) return false;
+        if (!originalText.equals(sentence.originalText)) return false;
         return wordList.equals(sentence.wordList);
     }
 
     @Override
     public int hashCode() {
-        int result = oryginalText.hashCode();
+        int result = originalText.hashCode();
         result = 31 * result + wordList.hashCode();
         return result;
     }
