@@ -1,14 +1,17 @@
 package pl.nordea.task.model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-
+@XmlRootElement
 public class Sentence {
     private String originalText;
+    @XmlElement(name = "word")
     private List<String> wordList;
 
     public Sentence() {
@@ -19,6 +22,14 @@ public class Sentence {
     public Sentence(String originalText) {
         this.originalText = originalText;
         this.wordList = null;
+    }
+
+    public List<String> getWordsList() {
+        return wordList;
+    }
+
+    public void setWordList(List<String> wordList) {
+        this.wordList = wordList;
     }
 
     public String getOriginalText() {

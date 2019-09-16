@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class ScanFileForSentence implements Iterator<String> {
+public class FileSentenceIterator implements Iterator<String> {
     private final Scanner scanner;
 
-    public ScanFileForSentence(File inputFile) {
+    public FileSentenceIterator(File inputFile) {
         try {
             scanner = new Scanner(inputFile);
             scanner.useDelimiter("(?<!Mr|Ms|Dr)[\\.?!]");
