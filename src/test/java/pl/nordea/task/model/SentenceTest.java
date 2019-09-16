@@ -21,11 +21,11 @@ public class SentenceTest {
         String givenSentenceTextB = "    \n Peter called for the wolf , and Aesop came .\n";
         String givenSentenceTextC = "    Cinderella likes shoes...";
         String givenSentenceTextD = "in In in.";
-        //when
         Sentence sentenceA = new Sentence(givenSentenceTextA);
         Sentence sentenceB = new Sentence(givenSentenceTextB);
         Sentence sentenceC = new Sentence(givenSentenceTextC);
         Sentence sentenceD = new Sentence(givenSentenceTextD);
+        //when
         String actualA = sentenceA.prepareSentenceToSplit(sentenceA.getoriginalText());
         String actualB = sentenceB.prepareSentenceToSplit(sentenceB.getoriginalText());
         String actualC = sentenceC.prepareSentenceToSplit(sentenceC.getoriginalText());
@@ -40,6 +40,77 @@ public class SentenceTest {
     @Test
     public void splitSentenceIntoWords() {
         //given
+        List<String> expectedA = new ArrayList<>();
+        expectedA.add("Mary");
+        expectedA.add("had");
+        expectedA.add("a");
+        expectedA.add("little");
+        expectedA.add("lamb");
+        List<String> expectedB = new ArrayList<>();
+        expectedB.add("Peter");
+        expectedB.add("called");
+        expectedB.add("for");
+        expectedB.add("the");
+        expectedB.add("wolf");
+        expectedB.add("and");
+        expectedB.add("Aesop");
+        expectedB.add("came");
+        List<String> expectedC = new ArrayList<>();
+        expectedC.add("Cinderella");
+        expectedC.add("likes");
+        expectedC.add("shoes");
+        List<String> expectedD = new ArrayList<>();
+        expectedD.add("in");
+        expectedD.add("In");
+        expectedD.add("in");
+        String preparedSentenceTextA = "Mary had a little lamb   ";
+        String preparedSentenceTextB = "      Peter called for the wolf   and Aesop came   ";
+        String preparedSentenceTextC = "    Cinderella likes shoes   ";
+        String preparedSentenceTextD = "in In in ";
+        Sentence sentenceA = new Sentence();
+        Sentence sentenceB = new Sentence();
+        Sentence sentenceC = new Sentence();
+        Sentence sentenceD = new Sentence();
+        //when
+        List<String> actualA = sentenceA.splitSentenceIntoWords(preparedSentenceTextA);
+        List<String> actualB = sentenceB.splitSentenceIntoWords(preparedSentenceTextB);
+        List<String> actualC = sentenceC.splitSentenceIntoWords(preparedSentenceTextC);
+        List<String> actualD = sentenceD.splitSentenceIntoWords(preparedSentenceTextD);
+        //then
+        assertEquals(expectedA, actualA);
+        assertEquals(expectedB, actualB);
+        assertEquals(expectedC, actualC);
+        assertEquals(expectedD, actualD);
+    }
+
+    @Test
+    public void sortWordList() {
+        //given
+        List<String> unsortedA = new ArrayList<>();
+        unsortedA.add("Mary");
+        unsortedA.add("had");
+        unsortedA.add("a");
+        unsortedA.add("little");
+        unsortedA.add("lamb");
+        List<String> unsortedB = new ArrayList<>();
+        unsortedB.add("Peter");
+        unsortedB.add("called");
+        unsortedB.add("for");
+        unsortedB.add("the");
+        unsortedB.add("wolf");
+        unsortedB.add("and");
+        unsortedB.add("Aesop");
+        unsortedB.add("came");
+        List<String> unsortedC = new ArrayList<>();
+        unsortedC.add("Cinderella");
+        unsortedC.add("likes");
+        unsortedC.add("shoes");
+        List<String> unsortedD = new ArrayList<>();
+        unsortedD.add("in");
+        unsortedD.add("In");
+        unsortedD.add("in");
+
+
         List<String> expectedA = new ArrayList<>();
         expectedA.add("a");
         expectedA.add("had");
@@ -63,27 +134,19 @@ public class SentenceTest {
         expectedD.add("in");
         expectedD.add("in");
         expectedD.add("In");
-        String preparedSentenceTextA = "Mary had a little lamb   ";
-        String preparedSentenceTextB = "      Peter called for the wolf   and Aesop came   ";
-        String preparedSentenceTextC = "    Cinderella likes shoes   ";
-        String preparedSentenceTextD = "in In in ";
-        //when
         Sentence sentenceA = new Sentence();
         Sentence sentenceB = new Sentence();
         Sentence sentenceC = new Sentence();
         Sentence sentenceD = new Sentence();
-        List<String> actualA = sentenceA.splitSentenceIntoWords(preparedSentenceTextA);
-        List<String> actualB = sentenceB.splitSentenceIntoWords(preparedSentenceTextB);
-        List<String> actualC = sentenceC.splitSentenceIntoWords(preparedSentenceTextC);
-        List<String> actualD = sentenceD.splitSentenceIntoWords(preparedSentenceTextD);
-
+        //when
+        List<String> actualA = sentenceA.sortWordList(unsortedA);
+        List<String> actualB = sentenceB.sortWordList(unsortedB);
+        List<String> actualC = sentenceC.sortWordList(unsortedC);
+        List<String> actualD = sentenceD.sortWordList(unsortedD);
         //then
         assertEquals(expectedA, actualA);
         assertEquals(expectedB, actualB);
         assertEquals(expectedC, actualC);
         assertEquals(expectedD, actualD);
-
-
     }
-
 }

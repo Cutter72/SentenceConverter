@@ -1,6 +1,10 @@
 package pl.nordea.task.model;
 
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 
 public class Sentence {
@@ -38,8 +42,18 @@ public class Sentence {
     }
 
     public List<String> splitSentenceIntoWords(String preparedSentenceText) {
+        String[] words = preparedSentenceText.split("[ ]+");
+        List<String> wordList = new ArrayList<>();
+        wordList.addAll(Arrays.asList(words));
+        while (wordList.contains("")) {
+            wordList.remove("");
+        }
+        return wordList;
+    }
 
-        return null;
+    public List<String> sortWordList(List<String> wordList) {
+        wordList.sort(Collator.getInstance(Locale.ENGLISH));
+        return wordList;
     }
 
 
