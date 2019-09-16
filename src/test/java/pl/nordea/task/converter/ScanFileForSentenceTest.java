@@ -13,14 +13,10 @@ public class ScanFileForSentenceTest {
     @Test
     public void hasNext() {
         //given
-        ScanFileForSentence scanFileForSentence = new ScanFileForSentence(new File(Paths.get("src/main/resources/test_data/lackOfSentenceEndMark.test").toAbsolutePath().toString()));
+        ScanFileForSentence scanFileForSentence = new ScanFileForSentence(new File(Paths.get("src/main/resources/test_data/sentenceReadTest").toAbsolutePath().toString()));
         //when
 
         //then
-        assertTrue(scanFileForSentence.hasNext());
-        scanFileForSentence.next();
-        assertTrue(scanFileForSentence.hasNext());
-        scanFileForSentence.next();
         assertTrue(scanFileForSentence.hasNext());
         scanFileForSentence.next();
         assertTrue(scanFileForSentence.hasNext());
