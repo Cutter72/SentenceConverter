@@ -19,7 +19,6 @@ public class XmlStreamWriter {
             jaxbContext = JAXBContext.newInstance(Sentence.class);
             this.marshaller = jaxbContext.createMarshaller();
             this.marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
-            this.marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -37,6 +36,11 @@ public class XmlStreamWriter {
         try {
             this.marshaller.marshal(sentence, fileOutputStream);
         } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        try {
+            fileOutputStream.write("\n".getBytes());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

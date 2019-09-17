@@ -20,8 +20,8 @@ public class XmlStreamWriterTest {
     @Test
     public void startDocument() {
         //given
-        Path outputFile = Paths.get("src/main/resources/test_data/startDocumentXmlStreamWriterTest").toAbsolutePath();
-        Path expectedFile = Paths.get("src/main/resources/test_data/expectedStartDocumentXmlStreamWriterTest").toAbsolutePath();
+        Path outputFile = Paths.get("src/main/resources/test_data/actual_XmlStreamWriter.startDocument").toAbsolutePath();
+        Path expectedFile = Paths.get("src/main/resources/test_data/expected_XmlStreamWriter.startDocument").toAbsolutePath();
         XmlStreamWriter xmlStreamWriter = null;
         try {
             xmlStreamWriter = new XmlStreamWriter(new FileOutputStream(outputFile.toString()));
@@ -49,8 +49,8 @@ public class XmlStreamWriterTest {
     @Test
     public void addSentence() {
         //given
-        Path outputFile = Paths.get("src/main/resources/test_data/sentenceXmlWriteTest").toAbsolutePath();
-        Path expectedFile = Paths.get("src/main/resources/test_data/expectedSentenceXmlWriteTest").toAbsolutePath();
+        Path outputFile = Paths.get("src/main/resources/test_data/actual_XmlStreamWriter.addSentence").toAbsolutePath();
+        Path expectedFile = Paths.get("src/main/resources/test_data/expected_XmlStreamWriter.addSentence").toAbsolutePath();
         FileOutputStream outputStream;
         try {
             outputStream = new FileOutputStream(outputFile.toString());
@@ -100,8 +100,8 @@ public class XmlStreamWriterTest {
     @Test
     public void closeDocument() {
         //given
-        Path outputFile = Paths.get("src/main/resources/test_data/closeDocumentXmlStreamWriterTest").toAbsolutePath();
-        Path expectedFile = Paths.get("src/main/resources/test_data/expectedCloseDocumentXmlStreamWriterTest").toAbsolutePath();
+        Path outputFile = Paths.get("src/main/resources/test_data/actual_XmlStreamWriter.closeDocument").toAbsolutePath();
+        Path expectedFile = Paths.get("src/main/resources/test_data/expected_XmlStreamWriter.closeDocument").toAbsolutePath();
         XmlStreamWriter xmlStreamWriter = null;
         try {
             xmlStreamWriter = new XmlStreamWriter(new FileOutputStream(outputFile.toString()));
