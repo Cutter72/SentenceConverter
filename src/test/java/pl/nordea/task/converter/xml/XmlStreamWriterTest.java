@@ -45,5 +45,30 @@ public class XmlStreamWriterTest {
 
     @Test
     public void closeDocument() {
+        //given
+        Path outputFile = Paths.get("src/main/resources/test_data/closeDocumentXmlStreamWriterTest").toAbsolutePath();
+        Path expectedFile = Paths.get("src/main/resources/test_data/expectedCloseDocumentXmlStreamWriterTest").toAbsolutePath();
+        XmlStreamWriter xmlStreamWriter = null;
+        try {
+            xmlStreamWriter = new XmlStreamWriter(new FileOutputStream(outputFile.toString()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        List<String> expected = null;
+        try {
+            expected = Files.readAllLines(expectedFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //when
+        xmlStreamWriter.closeDocument();
+        List<String> actual = null;
+        try {
+            actual = Files.readAllLines(outputFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //then
+        assertEquals(expected, actual);
     }
 }
