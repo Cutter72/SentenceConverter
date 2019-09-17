@@ -19,6 +19,10 @@ public class XmlStreamWriter {
     }
 
     public void closeDocument() {
-
+        try {
+            fileOutputStream.write("</oryginalText>".getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
