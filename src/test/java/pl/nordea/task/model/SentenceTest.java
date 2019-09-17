@@ -12,9 +12,9 @@ public class SentenceTest {
     @Test
     public void prepareSentenceToSplit() {
         //given
-        String expectedSentenceTextA = "Mary had a little lamb   ";
-        String expectedSentenceTextB = "      Peter called for the wolf   and Aesop came   ";
-        String expectedSentenceTextC = "    Cinderella likes shoes   ";
+        String expectedSentenceTextA = "Mary had a little lamb ";
+        String expectedSentenceTextB = " Peter called for the wolf and Aesop came ";
+        String expectedSentenceTextC = " Cinderella likes shoes ";
         String expectedSentenceTextD = "in In in ";
 
         String givenSentenceTextA = "Mary had a little lamb .\n";

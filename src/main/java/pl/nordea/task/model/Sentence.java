@@ -24,6 +24,11 @@ public class Sentence {
         this.wordList = null;
     }
 
+    public void prepareSentence(String originalText) {
+        this.originalText = originalText;
+        this.wordList = sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText)));
+    }
+
     public List<String> getWordsList() {
         return wordList;
     }
@@ -37,15 +42,16 @@ public class Sentence {
     }
 
     public String prepareSentenceToSplit(String originalText) {
-        return originalText.replaceAll("[.!?,:;\"\\n]"," ");
+        return originalText.replaceAll("[.!?,:;\\-\\s]+"," ");
     }
 
     public List<String> splitSentenceIntoWords(String preparedSentenceText) {
         String[] words = preparedSentenceText.split("[ ]+");
         List<String> wordList = new ArrayList<>();
         wordList.addAll(Arrays.asList(words));
-        while (wordList.contains("")) {
+        while (wordList.contains("") || wordList.contains(" ")) {
             wordList.remove("");
+            wordList.remove(" ");
         }
         return wordList;
     }

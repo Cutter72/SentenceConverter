@@ -85,8 +85,8 @@ public class XmlStreamWriterTest {
         }
         //when
 
-        xmlStreamWriter.addSentence(sentenceA, outputStream);
-        xmlStreamWriter.addSentence(sentenceB, outputStream);
+        xmlStreamWriter.addSentence(sentenceA);
+        xmlStreamWriter.addSentence(sentenceB);
         List<String> actual = null;
         try {
             actual = Files.readAllLines(outputFile);

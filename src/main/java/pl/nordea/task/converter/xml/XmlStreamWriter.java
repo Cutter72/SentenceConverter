@@ -26,20 +26,20 @@ public class XmlStreamWriter {
 
     public void startDocument() {
         try {
-            fileOutputStream.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<oryginalText>".getBytes());
+            fileOutputStream.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<oryginalText>\n".getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void addSentence(Sentence sentence, FileOutputStream fileOutputStream) {
+    public void addSentence(Sentence sentence) {
         try {
-            this.marshaller.marshal(sentence, fileOutputStream);
+            this.marshaller.marshal(sentence, this.fileOutputStream);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
         try {
-            fileOutputStream.write("\n".getBytes());
+            this.fileOutputStream.write("\n".getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class XmlStreamWriter {
 
     public void closeDocument() {
         try {
-            fileOutputStream.write("</oryginalText>".getBytes());
+            this.fileOutputStream.write("</oryginalText>".getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
