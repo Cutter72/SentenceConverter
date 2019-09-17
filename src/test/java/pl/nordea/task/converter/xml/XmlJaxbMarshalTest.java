@@ -26,18 +26,25 @@ public class XmlJaxbMarshalTest {
             return;
         }
 
-        Sentence sentence = new Sentence();
-        List<String> wordList = new ArrayList<>();
-        wordList.add("Love");
-        wordList.add("is");
-        wordList.add("everything");
-        wordList.add("you");
-        wordList.add("need");
-        sentence.setWordList(wordList);
+        Sentence sentenceA = new Sentence();
+        List<String> wordListA = new ArrayList<>();
+        wordListA.add("Love");
+        wordListA.add("is");
+        wordListA.add("everything");
+        wordListA.add("you");
+        wordListA.add("need");
+        sentenceA.setWordList(wordListA);
+
+        Sentence sentenceB = new Sentence();
+        List<String> wordListB = new ArrayList<>();
+        wordListB.add("Be");
+        wordListB.add("yourself");
+        sentenceB.setWordList(wordListB);
 
         Path outputFile = Paths.get("src/main/resources/test_data/sentenceXmlWriteTest").toAbsolutePath();
         Path expectedFile = Paths.get("src/main/resources/test_data/expectedSentenceXmlWriteTest").toAbsolutePath();
         FileOutputStream outputStream;
+
         try {
             outputStream = new FileOutputStream(outputFile.toString());
         } catch (FileNotFoundException e) {
@@ -47,16 +54,13 @@ public class XmlJaxbMarshalTest {
         List<String> expected = Files.readAllLines(expectedFile);
         //when
         try {
-            xmlJaxbMarshal.addSentence(
-                    sentence,
-                    outputStream);
+            xmlJaxbMarshal.addSentence(sentenceA, outputStream);
+            xmlJaxbMarshal.addSentence(sentenceB, outputStream);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
         List<String> actual = Files.readAllLines(outputFile);
         //then
         assertEquals(expected, actual);
-
-
     }
 }
