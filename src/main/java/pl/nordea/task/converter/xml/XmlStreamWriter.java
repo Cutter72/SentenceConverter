@@ -19,6 +19,7 @@ public class XmlStreamWriter {
             jaxbContext = JAXBContext.newInstance(Sentence.class);
             this.marshaller = jaxbContext.createMarshaller();
             this.marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+            this.marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
         } catch (JAXBException e) {
             e.printStackTrace();
         }

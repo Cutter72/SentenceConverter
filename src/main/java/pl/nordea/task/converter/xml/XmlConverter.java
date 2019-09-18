@@ -22,10 +22,15 @@ public class XmlConverter {
         while (fileSentenceIterator.hasNext()) {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
-            if (originalText.matches("[\\s]+") || originalText.matches("")) {
+            sentence.prepareSentence(originalText);
+            if (originalText.matches("[\\s]+") ||
+                    originalText.matches("") ||
+                    originalText.matches("Mr. and \r\n" +
+                            "Ms. Smith \r\n" +
+                            "met Dr. Jekyll \r\n" +
+                            "outside")) {
                 continue;
             }
-            sentence.prepareSentence(originalText);
             xmlStreamWriter.addSentence(sentence);
         }
         xmlStreamWriter.closeDocument();
