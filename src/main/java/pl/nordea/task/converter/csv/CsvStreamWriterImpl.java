@@ -16,12 +16,13 @@ public class CsvStreamWriterImpl implements StreamWriterInterface {
     }
 
     void startDocument(int wordCount) {
-        for (int i = 1; i <= wordCount; i++) {
-            try {
+        try {
+            for (int i = 1; i <= wordCount; i++) {
                 fileOutputStream.write((", Word " + i).getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            fileOutputStream.write("\n".getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
