@@ -4,7 +4,7 @@ import pl.nordea.task.converter.ConverterInterface;
 
 import java.io.File;
 
-public class CsvConverter implements ConverterInterface {
+public class CsvConverterImpl implements ConverterInterface {
 
     public void convert(File inputFile, File outputFile) {
 

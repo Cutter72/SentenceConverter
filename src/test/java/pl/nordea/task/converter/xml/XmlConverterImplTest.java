@@ -10,12 +10,12 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class XmlConverterTest {
+public class XmlConverterImplTest {
 
     @Test
     public void convert() {
         //given
-        XmlConverter xmlConverter = new XmlConverter();
+        XmlConverterImpl xmlConverterImpl = new XmlConverterImpl();
         Path inputFile = Paths.get("src/main/resources/sample_data/small.in").toAbsolutePath();
         Path outputFile = Paths.get("src/main/resources/test_data/small.xml").toAbsolutePath();
         Path expectedFile = Paths.get("src/main/resources/sample_data/small.xml").toAbsolutePath();
@@ -26,7 +26,7 @@ public class XmlConverterTest {
             e.printStackTrace();
         }
         //when
-        xmlConverter.convert(inputFile.toFile(), outputFile.toFile());
+        xmlConverterImpl.convert(inputFile.toFile(), outputFile.toFile());
         List<String> actual = null;
         try {
             actual = Files.readAllLines(outputFile);
