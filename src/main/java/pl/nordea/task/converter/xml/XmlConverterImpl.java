@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 
 class XmlConverterImpl implements ConverterInterface {
 
+    @Override
     public void convert(File inputFile, File outputFile) {
         FileSentenceIterator fileSentenceIterator = new FileSentenceIterator(inputFile);
         XmlStreamWriterImpl xmlStreamWriterImpl = null;

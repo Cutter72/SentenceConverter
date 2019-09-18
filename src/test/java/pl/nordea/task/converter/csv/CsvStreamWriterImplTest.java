@@ -8,6 +8,7 @@ public class CsvStreamWriterImplTest {
 
     @Test
     public void startDocument() {
+        CsvStreamWriterImpl csvStreamWriter;
     }
 
     @Test
@@ -16,5 +17,6 @@ public class CsvStreamWriterImplTest {
 
     @Test
     public void closeDocument() {
+        //do nothing
     }
 }
