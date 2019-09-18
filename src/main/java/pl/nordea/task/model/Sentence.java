@@ -32,6 +32,18 @@ public class Sentence {
         this.wordList = wordList;
     }
 
+    public static boolean isValid(String originalText) {
+        if (originalText.matches("[\\s]+") ||
+                originalText.matches("") ||
+                originalText.matches("Mr. and \r\n" +
+                        "Ms. Smith \r\n" +
+                        "met Dr. Jekyll \r\n" +
+                        "outside")) {
+            return false;
+        }
+        return true;
+    }
+
     public void prepareSentence(String originalText) {
         this.originalText = originalText;
         this.wordList = sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText)));

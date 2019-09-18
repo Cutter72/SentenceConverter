@@ -24,16 +24,10 @@ class XmlConverterImpl implements ConverterInterface {
         while (fileSentenceIterator.hasNext()) {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
-            sentence.prepareSentence(originalText);
-            if (originalText.matches("[\\s]+") ||
-                    originalText.matches("") ||
-                    originalText.matches("Mr. and \r\n" +
-                            "Ms. Smith \r\n" +
-                            "met Dr. Jekyll \r\n" +
-                            "outside")) {
-                continue;
+            if (Sentence.isValid(originalText)) {
+                sentence.prepareSentence(originalText);
+                xmlStreamWriterImpl.addSentence(sentence);
             }
-            xmlStreamWriterImpl.addSentence(sentence);
         }
         xmlStreamWriterImpl.closeDocument();
     }
