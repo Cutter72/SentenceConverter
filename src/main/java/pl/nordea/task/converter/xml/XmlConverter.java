@@ -1,5 +1,6 @@
 package pl.nordea.task.converter.xml;
 
+import pl.nordea.task.converter.ConverterInterface;
 import pl.nordea.task.converter.FileSentenceIterator;
 import pl.nordea.task.model.Sentence;
 
@@ -7,9 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-class XmlConverter {
+class XmlConverter implements ConverterInterface {
 
-    void convert(File inputFile, File outputFile) {
+    public void convert(File inputFile, File outputFile) {
         FileSentenceIterator fileSentenceIterator = new FileSentenceIterator(inputFile);
         XmlStreamWriterImpl xmlStreamWriterImpl = null;
 

@@ -1,11 +1,10 @@
 package pl.nordea.task.converter.csv;
 
-import lombok.Data;
+import pl.nordea.task.converter.ConverterInterface;
 
 import java.io.File;
 
-@Data
-public class CsvConverter {
+public class CsvConverter implements ConverterInterface {
 
     public void convert(File inputFile, File outputFile) {
 
