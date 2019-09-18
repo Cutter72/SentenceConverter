@@ -8,9 +8,11 @@ import java.io.IOException;
 
 public class CsvStreamWriterImpl implements StreamWriterInterface {
     private FileOutputStream fileOutputStream;
+    private int sentenceCount;
 
     CsvStreamWriterImpl(FileOutputStream fileOutputStream) {
         this.fileOutputStream = fileOutputStream;
+        this.sentenceCount = 0;
     }
 
     void startDocument(int wordCount) {
@@ -25,7 +27,16 @@ public class CsvStreamWriterImpl implements StreamWriterInterface {
 
     @Override
     public void addSentence(Sentence sentence) {
-
+        this.sentenceCount++;
+        try {
+            fileOutputStream.write(("Sentence " + this.sentenceCount).getBytes());
+            for (String word : sentence.getWordsList()) {
+                fileOutputStream.write((", " + word).getBytes());
+            }
+            fileOutputStream.write("\n".getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

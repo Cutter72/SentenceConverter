@@ -24,13 +24,17 @@ public class Sentence {
         this.wordList = null;
     }
 
-    public void prepareSentence(String originalText) {
-        this.originalText = originalText;
-        this.wordList = sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText)));
+    public List<String> getWordsList() {
+        return wordList;
     }
 
     public void setWordList(List<String> wordList) {
         this.wordList = wordList;
+    }
+
+    public void prepareSentence(String originalText) {
+        this.originalText = originalText;
+        this.wordList = sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText)));
     }
 
     String getOriginalText() {
