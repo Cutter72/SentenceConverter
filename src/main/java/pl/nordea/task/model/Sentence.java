@@ -42,7 +42,8 @@ public class Sentence {
     }
 
     public String prepareSentenceToSplit(String originalText) {
-        return originalText.replaceAll("[.!?,:;\\-\\s]+"," ");
+        String preparingTextStepA = originalText.replaceAll("[.!?,:;\\-\\s]+", " ");
+        return preparingTextStepA.replaceAll("['’]+", "&apos;");
     }
 
     public List<String> splitSentenceIntoWords(String preparedSentenceText) {

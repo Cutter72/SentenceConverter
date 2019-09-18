@@ -21,7 +21,11 @@ public class XmlConverter {
         xmlStreamWriter.startDocument();
         while (fileSentenceIterator.hasNext()) {
             Sentence sentence = new Sentence();
-            sentence.prepareSentence(fileSentenceIterator.next());
+            String originalText = fileSentenceIterator.next();
+            if (originalText.matches("[\\s]+") || originalText.matches("")) {
+                continue;
+            }
+            sentence.prepareSentence(originalText);
             xmlStreamWriter.addSentence(sentence);
         }
         xmlStreamWriter.closeDocument();
