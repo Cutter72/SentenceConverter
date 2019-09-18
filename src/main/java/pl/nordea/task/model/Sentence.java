@@ -29,28 +29,23 @@ public class Sentence {
         this.wordList = sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText)));
     }
 
-    public List<String> getWordsList() {
-        return wordList;
-    }
-
     public void setWordList(List<String> wordList) {
         this.wordList = wordList;
     }
 
-    public String getOriginalText() {
+    String getOriginalText() {
         return originalText;
     }
 
-    public String prepareSentenceToSplit(String originalText) {
+    String prepareSentenceToSplit(String originalText) {
         String preparingTextStepA = originalText.replaceAll("(?<!Mr|Ms|Dr)[.]+", " ");
         String preparingTextStepB = preparingTextStepA.replaceAll("[!?,:;\\-\\s()]+", " ");
         return preparingTextStepB.replaceAll("['’]+", "&apos;");
     }
 
-    public List<String> splitSentenceIntoWords(String preparedSentenceText) {
+    List<String> splitSentenceIntoWords(String preparedSentenceText) {
         String[] words = preparedSentenceText.split("[ ]+");
-        List<String> wordList = new ArrayList<>();
-        wordList.addAll(Arrays.asList(words));
+        List<String> wordList = new ArrayList<>(Arrays.asList(words));
         while (wordList.contains("") || wordList.contains(" ")) {
             wordList.remove("");
             wordList.remove(" ");
@@ -58,7 +53,7 @@ public class Sentence {
         return wordList;
     }
 
-    public List<String> sortWordList(List<String> wordList) {
+    List<String> sortWordList(List<String> wordList) {
         wordList.sort(Collator.getInstance(Locale.ENGLISH));
         return wordList;
     }

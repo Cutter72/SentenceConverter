@@ -3,7 +3,6 @@ package pl.nordea.task.converter.xml;
 import org.junit.Test;
 import pl.nordea.task.model.Sentence;
 
-import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;

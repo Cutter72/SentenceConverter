@@ -7,9 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class XmlConverter {
+class XmlConverter {
 
-    public void convert(File inputFile, File outputFile) {
+    void convert(File inputFile, File outputFile) {
         FileSentenceIterator fileSentenceIterator = new FileSentenceIterator(inputFile);
         XmlStreamWriter xmlStreamWriter = null;
 
