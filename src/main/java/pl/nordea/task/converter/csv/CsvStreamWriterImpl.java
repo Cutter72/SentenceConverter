@@ -8,22 +8,16 @@ import java.io.FileOutputStream;
 public class CsvStreamWriterImpl implements StreamWriterInterface {
     private FileOutputStream fileOutputStream;
 
-    public CsvStreamWriterImpl(FileOutputStream fileOutputStream) {
+    CsvStreamWriterImpl(FileOutputStream fileOutputStream) {
         this.fileOutputStream = fileOutputStream;
     }
 
-    @Override
-    public void startDocument() {
+    void startDocument(int wordCount) {
 
     }
 
     @Override
     public void addSentence(Sentence sentence) {
-
-    }
-
-    @Override
-    public void closeDocument() {
 
     }
 
