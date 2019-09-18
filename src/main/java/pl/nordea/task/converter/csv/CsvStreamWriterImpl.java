@@ -5,7 +5,18 @@ import pl.nordea.task.model.Sentence;
 
 public class CsvStreamWriterImpl implements StreamWriterInterface {
     @Override
+    public void startDocument() {
+
+    }
+
+    @Override
     public void addSentence(Sentence sentence) {
 
     }
+
+    @Override
+    public void closeDocument() {
+
+    }
+
 }

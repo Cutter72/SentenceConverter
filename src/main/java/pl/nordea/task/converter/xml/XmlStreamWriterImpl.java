@@ -26,7 +26,8 @@ class XmlStreamWriterImpl implements StreamWriterInterface {
         }
     }
 
-    void startDocument() {
+    @Override
+    public void startDocument() {
         try {
             fileOutputStream.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<oryginalText>\n".getBytes());
         } catch (IOException e) {
@@ -48,7 +49,8 @@ class XmlStreamWriterImpl implements StreamWriterInterface {
         }
     }
 
-    void closeDocument() {
+    @Override
+    public void closeDocument() {
         try {
             this.fileOutputStream.write("</oryginalText>".getBytes());
         } catch (IOException e) {
