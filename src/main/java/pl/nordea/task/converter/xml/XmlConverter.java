@@ -11,14 +11,14 @@ class XmlConverter {
 
     void convert(File inputFile, File outputFile) {
         FileSentenceIterator fileSentenceIterator = new FileSentenceIterator(inputFile);
-        XmlStreamWriter xmlStreamWriter = null;
+        XmlStreamWriterImpl xmlStreamWriterImpl = null;
 
         try {
-            xmlStreamWriter = new XmlStreamWriter(new FileOutputStream(outputFile));
+            xmlStreamWriterImpl = new XmlStreamWriterImpl(new FileOutputStream(outputFile));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        xmlStreamWriter.startDocument();
+        xmlStreamWriterImpl.startDocument();
         while (fileSentenceIterator.hasNext()) {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
@@ -31,8 +31,8 @@ class XmlConverter {
                             "outside")) {
                 continue;
             }
-            xmlStreamWriter.addSentence(sentence);
+            xmlStreamWriterImpl.addSentence(sentence);
         }
-        xmlStreamWriter.closeDocument();
+        xmlStreamWriterImpl.closeDocument();
     }
 }

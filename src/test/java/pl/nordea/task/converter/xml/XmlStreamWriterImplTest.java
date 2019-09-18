@@ -14,16 +14,16 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class XmlStreamWriterTest {
+public class XmlStreamWriterImplTest {
 
     @Test
     public void startDocument() {
         //given
         Path outputFile = Paths.get("src/main/resources/test_data/actual_XmlStreamWriter.startDocument").toAbsolutePath();
         Path expectedFile = Paths.get("src/main/resources/test_data/expected_XmlStreamWriter.startDocument").toAbsolutePath();
-        XmlStreamWriter xmlStreamWriter = null;
+        XmlStreamWriterImpl xmlStreamWriterImpl = null;
         try {
-            xmlStreamWriter = new XmlStreamWriter(new FileOutputStream(outputFile.toString()));
+            xmlStreamWriterImpl = new XmlStreamWriterImpl(new FileOutputStream(outputFile.toString()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class XmlStreamWriterTest {
             e.printStackTrace();
         }
         //when
-        xmlStreamWriter.startDocument();
+        xmlStreamWriterImpl.startDocument();
         List<String> actual = null;
         try {
             actual = Files.readAllLines(outputFile);
@@ -57,8 +57,8 @@ public class XmlStreamWriterTest {
             e.printStackTrace();
             return;
         }
-        XmlStreamWriter xmlStreamWriter;
-        xmlStreamWriter = new XmlStreamWriter(outputStream);
+        XmlStreamWriterImpl xmlStreamWriterImpl;
+        xmlStreamWriterImpl = new XmlStreamWriterImpl(outputStream);
 
         Sentence sentenceA = new Sentence();
         List<String> wordListA = new ArrayList<>();
@@ -84,8 +84,8 @@ public class XmlStreamWriterTest {
         }
         //when
 
-        xmlStreamWriter.addSentence(sentenceA);
-        xmlStreamWriter.addSentence(sentenceB);
+        xmlStreamWriterImpl.addSentence(sentenceA);
+        xmlStreamWriterImpl.addSentence(sentenceB);
         List<String> actual = null;
         try {
             actual = Files.readAllLines(outputFile);
@@ -101,9 +101,9 @@ public class XmlStreamWriterTest {
         //given
         Path outputFile = Paths.get("src/main/resources/test_data/actual_XmlStreamWriter.closeDocument").toAbsolutePath();
         Path expectedFile = Paths.get("src/main/resources/test_data/expected_XmlStreamWriter.closeDocument").toAbsolutePath();
-        XmlStreamWriter xmlStreamWriter = null;
+        XmlStreamWriterImpl xmlStreamWriterImpl = null;
         try {
-            xmlStreamWriter = new XmlStreamWriter(new FileOutputStream(outputFile.toString()));
+            xmlStreamWriterImpl = new XmlStreamWriterImpl(new FileOutputStream(outputFile.toString()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -114,7 +114,7 @@ public class XmlStreamWriterTest {
             e.printStackTrace();
         }
         //when
-        xmlStreamWriter.closeDocument();
+        xmlStreamWriterImpl.closeDocument();
         List<String> actual = null;
         try {
             actual = Files.readAllLines(outputFile);

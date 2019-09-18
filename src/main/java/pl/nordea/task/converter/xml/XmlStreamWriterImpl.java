@@ -1,5 +1,6 @@
 package pl.nordea.task.converter.xml;
 
+import pl.nordea.task.converter.StreamWriterInterface;
 import pl.nordea.task.model.Sentence;
 
 import javax.xml.bind.JAXBContext;
@@ -8,11 +9,11 @@ import javax.xml.bind.Marshaller;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-class XmlStreamWriter {
+class XmlStreamWriterImpl implements StreamWriterInterface {
     private FileOutputStream fileOutputStream;
     private Marshaller marshaller;
 
-    XmlStreamWriter(FileOutputStream fileOutputStream) {
+    XmlStreamWriterImpl(FileOutputStream fileOutputStream) {
         this.fileOutputStream = fileOutputStream;
         JAXBContext jaxbContext;
         try {
@@ -33,7 +34,8 @@ class XmlStreamWriter {
         }
     }
 
-    void addSentence(Sentence sentence) {
+    @Override
+    public void addSentence(Sentence sentence) {
         try {
             this.marshaller.marshal(sentence, this.fileOutputStream);
         } catch (JAXBException e) {
