@@ -219,5 +219,27 @@ public class SentenceTest {
 
     @Test
     public void prepareSentenceForXml() {
+        //given
+        Sentence sentence = new Sentence();
+        String sentenceText = "I couldn't understand a word,perhaps because Chinese \n" +
+                " isn't my mother tongue";
+        List<String> expected = new ArrayList<>();
+        expected.add("a");
+        expected.add("because");
+        expected.add("Chinese");
+        expected.add("couldn&apos;t");
+        expected.add("I");
+        expected.add("isn&apos;t");
+        expected.add("mother");
+        expected.add("my");
+        expected.add("perhaps");
+        expected.add("tongue");
+        expected.add("understand");
+        expected.add("word");
+        //when
+        sentence.prepareSentenceForXml(sentenceText);
+        //then
+        assertEquals(sentenceText, sentence.getOriginalText());
+        assertEquals(expected, sentence.getWordsList());
     }
 }
