@@ -155,14 +155,17 @@ public class SentenceTest {
         //given
         Sentence sentence = new Sentence();
         List<String> inputWords = new ArrayList<>();
-        inputWords.add("<&>\"'");
-        inputWords.add("<&>\"'");
+        inputWords.add("word<&>\"'word");
+        inputWords.add("word<&>\"'word");
+        inputWords.add("clear");
+        sentence.setWordList(inputWords);
         List<String> expected = new ArrayList<>();
-        expected.add("&lt;&amp;&gt;&quot;&apos;");
-        expected.add("&lt;&amp;&gt;&quot;&apos;");
+        expected.add("word&lt;&amp;&gt;&quot;&apos;word");
+        expected.add("word&lt;&amp;&gt;&quot;&apos;word");
+        expected.add("clear");
         //when
-        sentence.customizeForXml();
+        List<String> actual = sentence.customizeForXml(inputWords);
         //then
-        assertEquals(expected, sentence.getWordsList());
+        assertEquals(expected, actual);
     }
 }
