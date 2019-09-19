@@ -149,4 +149,20 @@ public class SentenceTest {
         assertEquals(expectedC, actualC);
         assertEquals(expectedD, actualD);
     }
+
+    @Test
+    public void customizeForXml() {
+        //given
+        Sentence sentence = new Sentence();
+        List<String> inputWords = new ArrayList<>();
+        inputWords.add("<&>\"'");
+        inputWords.add("<&>\"'");
+        List<String> expected = new ArrayList<>();
+        expected.add("&lt;&amp;&gt;&quot;&apos;");
+        expected.add("&lt;&amp;&gt;&quot;&apos;");
+        //when
+        sentence.customizeForXml();
+        //then
+        assertEquals(expected, sentence.getWordsList());
+    }
 }

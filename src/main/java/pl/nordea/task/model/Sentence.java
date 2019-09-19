@@ -56,7 +56,7 @@ public class Sentence {
     String prepareSentenceToSplit(String originalText) {
         String preparingTextStepA = originalText.replaceAll("(?<!Mr|Ms|Dr)[.]+", " ");
         String preparingTextStepB = preparingTextStepA.replaceAll("[!?,:;\\-\\s()]+", " ");
-        return preparingTextStepB.replaceAll("['’]+", "&apos;");
+        return preparingTextStepB.replaceAll("[’]+", "'");
     }
 
     List<String> splitSentenceIntoWords(String preparedSentenceText) {
@@ -91,5 +91,9 @@ public class Sentence {
         int result = originalText.hashCode();
         result = 31 * result + wordList.hashCode();
         return result;
+    }
+
+    public void customizeForXml() {
+
     }
 }
