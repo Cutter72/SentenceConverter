@@ -6,7 +6,7 @@ A sentence converter developed in a test-driven way.
 
 ### Java
 
-You need Java SE 8.
+You need Java SE 8-13.
 
 ### Maven
 
