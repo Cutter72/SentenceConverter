@@ -168,4 +168,34 @@ public class SentenceTest {
         //then
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void isValid() {
+        //given
+        String sentenceToCheckA = "";
+        String sentenceToCheckB = "  \n \r \r\n \t  ";
+        String sentenceToCheckC = "Mr. and \r\n" +
+                "Ms. Smith \r\n" +
+                "met Dr. Jekyll \r\n" +
+                "outside";
+        String sentenceToCheckD = "    \n Peter called for the wolf , and Aesop came .\n";
+        //when
+        boolean actualA = Sentence.isValid(sentenceToCheckA);
+        boolean actualB = Sentence.isValid(sentenceToCheckB);
+        boolean actualC = Sentence.isValid(sentenceToCheckC);
+        boolean actualD = Sentence.isValid(sentenceToCheckD);
+        //then
+        assertFalse(actualA);
+        assertFalse(actualB);
+        assertFalse(actualC);
+        assertTrue(actualD);
+    }
+
+    @Test
+    public void prepareSentenceForCsv() {
+    }
+
+    @Test
+    public void prepareSentenceForXml() {
+    }
 }
