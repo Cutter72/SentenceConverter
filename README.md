@@ -1,6 +1,9 @@
 # Sentence converter (CSV, XML)
 
-A sentence converter developed in a test-driven way.
+Application for converting plain text into CSV and XML format. Input text is divided into sentences, sentences into words, then
+saved to specified format. Aim of this program is to handle large files which
+may exceed heap memory. Whole application was written in TDD technique.
+* Technologies: Junit4, JAXB, Maven
 
 ## Prerequisites
 
