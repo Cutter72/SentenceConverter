@@ -2,6 +2,7 @@ package pl.nordea.task.converter.csv;
 
 import pl.nordea.task.converter.ConverterInterface;
 import pl.nordea.task.converter.FileSentenceIterator;
+import pl.nordea.task.converter.WordCounter;
 import pl.nordea.task.model.Sentence;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class CsvConverterImpl implements ConverterInterface {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        csvStreamWriterImpl.startDocument(5); //todo counter
+        csvStreamWriterImpl.startDocument(new WordCounter().findMaxNumberOfWordsInSentence(inputFile));
         while (fileSentenceIterator.hasNext()) {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
