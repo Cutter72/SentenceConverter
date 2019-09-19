@@ -15,7 +15,7 @@ You don't need to install Maven. Simply use the attached `mvnw` ([Maven Wrapper]
 [Maven Wrapper]: https://github.com/takari/maven-wrapper
 
 
-#Guidlines for task
+# Guidlines for task
 ## Java Coding Assignment
 
 The following is a small coding exercise. You have to provide a working Java program that fulfils a number of requirements. The assessment of your answer will be based on fulfilment of functionality requirements and the quality of the implementation.
