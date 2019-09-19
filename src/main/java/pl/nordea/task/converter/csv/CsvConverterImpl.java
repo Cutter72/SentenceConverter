@@ -20,20 +20,14 @@ public class CsvConverterImpl implements ConverterInterface {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        csvStreamWriterImpl.startDocument(5);
+        csvStreamWriterImpl.startDocument(5); //todo counter
         while (fileSentenceIterator.hasNext()) {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
-            sentence.prepareSentence(originalText);
-            if (originalText.matches("[\\s]+") ||
-                    originalText.matches("") ||
-                    originalText.matches("Mr. and \r\n" +
-                            "Ms. Smith \r\n" +
-                            "met Dr. Jekyll \r\n" +
-                            "outside")) {
-                continue;
+            if (Sentence.isValid(originalText)) {
+                sentence.prepareSentence(originalText);
+                csvStreamWriterImpl.addSentence(sentence);
             }
-            csvStreamWriterImpl.addSentence(sentence);
         }
     }
 }
