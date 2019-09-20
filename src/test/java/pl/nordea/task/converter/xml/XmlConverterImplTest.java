@@ -3,12 +3,11 @@ package pl.nordea.task.converter.xml;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.Scanner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class XmlConverterImplTest {
 
@@ -19,21 +18,29 @@ public class XmlConverterImplTest {
         Path inputFile = Paths.get("src/main/resources/sample_data/small.in").toAbsolutePath();
         Path outputFile = Paths.get("src/main/resources/test_data/small.xml").toAbsolutePath();
         Path expectedFile = Paths.get("src/main/resources/sample_data/small.xml").toAbsolutePath();
-        List<String> expected = null;
+        StringBuffer expected = new StringBuffer();
         try {
-            expected = Files.readAllLines(expectedFile);
+            Scanner scanner = new Scanner(expectedFile);
+            while (scanner.hasNextLine()) {
+                expected.append(scanner.nextLine());
+                expected.append("\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
         //when
         xmlConverterImpl.convert(inputFile.toFile(), outputFile.toFile());
-        List<String> actual = null;
+        StringBuffer actual = new StringBuffer();
         try {
-            actual = Files.readAllLines(outputFile);
+            Scanner scanner = new Scanner(outputFile);
+            while (scanner.hasNextLine()) {
+                actual.append(scanner.nextLine());
+                actual.append("\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
         //then
-        assertEquals(expected, actual);
+        assertEquals(expected.toString(), actual.toString());
     }
 }
