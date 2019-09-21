@@ -25,7 +25,7 @@ class XmlConverterImpl implements ConverterInterface {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
             if (Sentence.isValid(originalText)) {
-                sentence.prepareSentenceForXml(originalText);
+                sentence.prepareSentence(originalText);
                 xmlStreamWriterImpl.addSentence(sentence);
             }
         }

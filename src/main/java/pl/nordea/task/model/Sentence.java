@@ -45,14 +45,9 @@ public class Sentence {
         return true;
     }
 
-    public void prepareSentenceForCsv(String originalText) {
+    public void prepareSentence(String originalText) {
         this.originalText = originalText;
         this.wordList = sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText)));
-    }
-
-    public void prepareSentenceForXml(String originalText) {
-        this.originalText = originalText;
-        this.wordList = customizeForXml(sortWordList(splitSentenceIntoWords(prepareSentenceToSplit(originalText))));
     }
 
     String getOriginalText() {
@@ -97,26 +92,5 @@ public class Sentence {
         int result = originalText.hashCode();
         result = 31 * result + wordList.hashCode();
         return result;
-    }
-
-    public List<String> customizeForXml(List<String> wordList) {
-        List<String> modifiedWordList = new ArrayList<>();
-        for (String word : wordList) {
-            if (word.contains("&") ||
-                    word.contains("<") ||
-                    word.contains(">") ||
-                    word.contains("\"") ||
-                    word.contains("'")) {
-                String ampSwap = word.replaceAll("&", "&amp;");
-                String ltSwap = ampSwap.replaceAll("<", "&lt;");
-                String gtSwap = ltSwap.replaceAll(">", "&gt;");
-                String quotSwap = gtSwap.replaceAll("\"", "&quot;");
-                String aposSwap = quotSwap.replaceAll("'", "&apos;");
-                modifiedWordList.add(aposSwap);
-            } else {
-                modifiedWordList.add(word);
-            }
-        }
-        return modifiedWordList;
     }
 }

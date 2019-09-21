@@ -151,25 +151,6 @@ public class SentenceTest {
     }
 
     @Test
-    public void customizeForXml() {
-        //given
-        Sentence sentence = new Sentence();
-        List<String> inputWords = new ArrayList<>();
-        inputWords.add("word<&>\"'word");
-        inputWords.add("word<&>\"'word");
-        inputWords.add("clear");
-        sentence.setWordList(inputWords);
-        List<String> expected = new ArrayList<>();
-        expected.add("word&lt;&amp;&gt;&quot;&apos;word");
-        expected.add("word&lt;&amp;&gt;&quot;&apos;word");
-        expected.add("clear");
-        //when
-        List<String> actual = sentence.customizeForXml(inputWords);
-        //then
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void isValid() {
         //given
         String sentenceToCheckA = "";
@@ -192,7 +173,7 @@ public class SentenceTest {
     }
 
     @Test
-    public void prepareSentenceForCsv() {
+    public void prepareSentence() {
         //given
         Sentence sentence = new Sentence();
         String sentenceText = "I couldn't understand a word,perhaps because Chinese \n" +
@@ -211,33 +192,7 @@ public class SentenceTest {
         expected.add("understand");
         expected.add("word");
         //when
-        sentence.prepareSentenceForCsv(sentenceText);
-        //then
-        assertEquals(sentenceText, sentence.getOriginalText());
-        assertEquals(expected, sentence.getWordsList());
-    }
-
-    @Test
-    public void prepareSentenceForXml() {
-        //given
-        Sentence sentence = new Sentence();
-        String sentenceText = "I couldn't understand a word,perhaps because Chinese \n" +
-                " isn't my mother tongue";
-        List<String> expected = new ArrayList<>();
-        expected.add("a");
-        expected.add("because");
-        expected.add("Chinese");
-        expected.add("couldn&apos;t");
-        expected.add("I");
-        expected.add("isn&apos;t");
-        expected.add("mother");
-        expected.add("my");
-        expected.add("perhaps");
-        expected.add("tongue");
-        expected.add("understand");
-        expected.add("word");
-        //when
-        sentence.prepareSentenceForXml(sentenceText);
+        sentence.prepareSentence(sentenceText);
         //then
         assertEquals(sentenceText, sentence.getOriginalText());
         assertEquals(expected, sentence.getWordsList());

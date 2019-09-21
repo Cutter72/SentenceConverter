@@ -26,7 +26,7 @@ public class CsvConverterImpl implements ConverterInterface {
             Sentence sentence = new Sentence();
             String originalText = fileSentenceIterator.next();
             if (Sentence.isValid(originalText)) {
-                sentence.prepareSentenceForCsv(originalText);
+                sentence.prepareSentence(originalText);
                 csvStreamWriterImpl.addSentence(sentence);
             }
         }

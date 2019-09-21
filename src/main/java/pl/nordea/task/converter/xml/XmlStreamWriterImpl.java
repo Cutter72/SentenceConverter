@@ -22,7 +22,7 @@ class XmlStreamWriterImpl implements StreamWriterInterface {
             jaxbContext = JAXBContext.newInstance(Sentence.class);
             this.marshaller = jaxbContext.createMarshaller();
             this.marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
-            CharacterEscapeHandler escapeHandler = new NoEscapeHandler();
+            CharacterEscapeHandler escapeHandler = new XmlCharacterEscapeHandler();
             this.marshaller.setProperty("com.sun.xml.bind.characterEscapeHandler", escapeHandler);
         } catch (JAXBException e) {
             e.printStackTrace();
