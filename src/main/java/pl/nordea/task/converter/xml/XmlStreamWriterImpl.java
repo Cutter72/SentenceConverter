@@ -1,7 +1,6 @@
 package pl.nordea.task.converter.xml;
 
 import com.sun.xml.bind.marshaller.CharacterEscapeHandler;
-import com.sun.xml.bind.marshaller.NoEscapeHandler;
 import pl.nordea.task.converter.StreamWriterInterface;
 import pl.nordea.task.model.Sentence;
 
