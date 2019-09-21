@@ -1,5 +1,7 @@
 package pl.nordea.task.converter.xml;
 
+import com.sun.xml.internal.bind.marshaller.CharacterEscapeHandler;
+import com.sun.xml.internal.bind.marshaller.NoEscapeHandler;
 import pl.nordea.task.converter.StreamWriterInterface;
 import pl.nordea.task.model.Sentence;
 
@@ -20,7 +22,8 @@ class XmlStreamWriterImpl implements StreamWriterInterface {
             jaxbContext = JAXBContext.newInstance(Sentence.class);
             this.marshaller = jaxbContext.createMarshaller();
             this.marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
-            this.marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+            CharacterEscapeHandler escapeHandler = new NoEscapeHandler();
+            this.marshaller.setProperty("com.sun.xml.internal.bind.characterEscapeHandler", escapeHandler);
         } catch (JAXBException e) {
             e.printStackTrace();
         }

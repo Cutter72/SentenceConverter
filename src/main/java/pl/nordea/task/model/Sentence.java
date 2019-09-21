@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+
 @XmlRootElement
 public class Sentence {
     private String originalText;
